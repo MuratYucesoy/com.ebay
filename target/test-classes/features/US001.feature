@@ -17,13 +17,10 @@ Feature: Add product to basket
     And   verifies that products are listed in the required criteria
     And   closes the page
 
-  Scenario: The user lists products with different conditions and adds them to the basket
+  Scenario: No product should be listed outside the entered price range(negative test)
 
-    Then  clicks on the price and enters "100" and "1500"
-    Then  clicks on the item position and enters the "50 km" distance
-    Then  clicks delivery options and enters "Free Postage"
-    Then  clicks on the show only and prefer "Accepts Best offer"
-    Then  clicks on the seller and click "Sellers with eBay Stores"
+    Then  clicks on the price and enters "0" and "1500"
     And   clicks apply button
+    And   verifies that the product prices are within the entered price value range
 
 

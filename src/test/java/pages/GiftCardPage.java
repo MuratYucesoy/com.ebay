@@ -74,6 +74,6 @@ public class GiftCardPage {
     @FindBy(css =".x-tray-pill")
     public List<WebElement> conditions;
 
-    @FindBy(css = ".s-item__price")
+    @FindBy(xpath = "//span[@class='s-item__price']")
     public List<WebElement> prices;
 }
