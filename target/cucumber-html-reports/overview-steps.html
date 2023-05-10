@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<script src="js/jquery.min.js"></script>
+<script src="js/jquery.tablesorter.min.js"></script>
+<script src="js/Chart.min.js"></script>
+<script src="js/moment.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+
+<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css"/>
+<link rel="stylesheet" href="css/cucumber.css" type="text/css"/>
+<link rel="stylesheet" href="css/font-awesome.min.css"/>
+<link rel="shortcut icon" href="images/favicon.png"/>
+
+<script>
+$(document).ready(function() {
+    // this will tell tablesorter to try looking for the data-value attribute
+    // if present, it'll sort by that instead
+    // otherwise, it'll sort by the text content of the table cell
+    $("#tablesorter").tablesorter({
+        textAttribute: 'data-value',
+        // ignores the first row of the header, the 'scenario', 'steps', since
+        // sorting those doesn't make sense
+        selectorHeaders: '> thead tr:not(.dont-sort) th',
+        // use a stable sort
+        sortStable: true
+    });
+});
+</script>
+
+
+
+
+
+
+
+
+
+
+
+<title>Cucumber Reports (no 1) - Steps Overview</title>
+
+</head>
+<body>
+
+<nav class="navbar navbar-default navbar-fixed-top" id="navigation">
+  <div class="container-fluid">
+    <div class="collapse navbar-collapse">
+      <p class="navbar-text navbar-left">Cucumber Report</p>
+      <ul class="nav navbar-nav navbar-right">
+        <li role="presentation" ><a href="overview-features.html">Features</a></li>
+        <li role="presentation" ><a href="overview-tags.html">Tags</a></li>
+        <li role="presentation"     class="active" ><a href="overview-steps.html">Steps</a></li>
+        <li role="presentation" ><a href="overview-failures.html">Failures</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+<div class="container-fluid">
+  <div class="col-md-5 col-md-offset-1">
+
+<table class="table table-bordered" id="build-info">
+  <thead>
+    <tr>
+      <th>Project</th>
+        <th>Number</th>
+      <th>Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="info">
+      <td>cucumber-jvm-example</td>
+        <td>1</td>
+      <td>10 May 2023, 13:58</td>
+    </tr>
+  </tbody>
+</table>
+
+  </div>
+  <div class="col-md-3 col-md-offset-2">
+  </div>
+</div>
+
+
+<div id="report-lead" class="container-fluid">
+  <div class="col-md-10 col-md-offset-1">
+    <h2>Steps Statistics</h2>
+      <p>The following graph shows step statistics for this build. Below list is based on results.
+ step does not provide information about result then is not listed below.
+ Additionally @Before and @After are not counted because they are part of the scenarios, not steps.</p>
+  </div>
+</div>
+
+<div class="container-fluid" id="report">
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+      <table id="tablesorter" class="stats-table table-hover">
+
+        <thead>
+          <tr class="header">
+            <th>Implementation</th>
+            <th>Occurrences</th>
+            <th>Average duration</th>
+            <th>Max duration</th>
+            <th>Total durations</th>
+            <th>Ratio</th>
+          </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+              <td class="location">stepDefinitions.EbayStep.click_all_filters_button()</td>
+              <td>1</td>
+              <td class="duration" data-value="397462800">0.397</td>
+              <td class="duration" data-value="397462800">0.397</td>
+              <td class="duration" data-value="397462800">0.397</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">stepDefinitions.EbayStep.clicksApplyButton()</td>
+              <td>1</td>
+              <td class="duration" data-value="95836700">0.095</td>
+              <td class="duration" data-value="95836700">0.095</td>
+              <td class="duration" data-value="95836700">0.095</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">stepDefinitions.EbayStep.clicksDeliveryOptionsAndEnters(java.lang.String)</td>
+              <td>1</td>
+              <td class="duration" data-value="1000721000">1.000</td>
+              <td class="duration" data-value="1000721000">1.000</td>
+              <td class="duration" data-value="1000721000">1.000</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">stepDefinitions.EbayStep.clicksOnTheItemPositionAndEntersTheDistance(java.lang.String)</td>
+              <td>1</td>
+              <td class="duration" data-value="2171319400">2.171</td>
+              <td class="duration" data-value="2171319400">2.171</td>
+              <td class="duration" data-value="2171319400">2.171</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">stepDefinitions.EbayStep.clicksOnThePriceAndEntersAnd(java.lang.String,java.lang.String)</td>
+              <td>1</td>
+              <td class="duration" data-value="2727508900">2.727</td>
+              <td class="duration" data-value="2727508900">2.727</td>
+              <td class="duration" data-value="2727508900">2.727</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">stepDefinitions.EbayStep.clicksOnTheSellerAndClick(java.lang.String)</td>
+              <td>1</td>
+              <td class="duration" data-value="1315788800">1.315</td>
+              <td class="duration" data-value="1315788800">1.315</td>
+              <td class="duration" data-value="1315788800">1.315</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">stepDefinitions.EbayStep.clicksOnTheShowOnlyAndPreferSaleItemsDealsSavingsAcceptsBestOffer()</td>
+              <td>1</td>
+              <td class="duration" data-value="1578203800">1.578</td>
+              <td class="duration" data-value="1578203800">1.578</td>
+              <td class="duration" data-value="1578203800">1.578</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">stepDefinitions.EbayStep.closesThePage()</td>
+              <td>1</td>
+              <td class="duration" data-value="0">0.000</td>
+              <td class="duration" data-value="0">0.000</td>
+              <td class="duration" data-value="0">0.000</td>
+              <td class="failed">0.00%</td>
+            </tr>
+            <tr>
+              <td class="location">stepDefinitions.EbayStep.selects_the_gift_card_from_the_deals_and_sales_drop_down_menu_in_the_top_bar()</td>
+              <td>1</td>
+              <td class="duration" data-value="5771120800">5.771</td>
+              <td class="duration" data-value="5771120800">5.771</td>
+              <td class="duration" data-value="5771120800">5.771</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">stepDefinitions.EbayStep.the_user_goes_to_the_ebay_homepage()</td>
+              <td>1</td>
+              <td class="duration" data-value="10896620200">10.896</td>
+              <td class="duration" data-value="10896620200">10.896</td>
+              <td class="duration" data-value="10896620200">10.896</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">stepDefinitions.EbayStep.verifiesThatProductsAreListedInTheRequiredCriteria()</td>
+              <td>1</td>
+              <td class="duration" data-value="3346362900">3.346</td>
+              <td class="duration" data-value="3346362900">3.346</td>
+              <td class="duration" data-value="3346362900">3.346</td>
+              <td class="failed">0.00%</td>
+            </tr>
+        </tbody>
+
+        <tfoot class="total">
+          <tr>
+            <td>11</td>
+            <td>11</td>
+            <td class="duration">2.663</td>
+            <td class="duration">10.896</td>
+            <td class="duration">29.300</td>
+            <td>Totals</td>
+          </tr>
+        </tfoot>
+
+      </table>
+    </div>
+  </div>
+</div>
+
+
+<nav class="navbar navbar-default" id="footer">
+  <div class="container-fluid">
+    <p class="navbar-text navbar-right">
+        <small>generate Cucumber HTML reports via:&nbsp;</small>
+        <a class="navbar-link" href="https://github.com/jenkinsci/cucumber-reports-plugin">Jenkins Plugin</a> |
+        <a class="navbar-link" href="https://github.com/damianszczepanik/cucumber-reporting">Standalone</a> |
+        <a class="navbar-link" href="https://github.com/damianszczepanik/cucumber-sandwich">Sandwich</a> |
+        <a class="navbar-link" href="https://github.com/damianszczepanik/maven-cucumber-reporting">Maven</a>
+        &nbsp;&nbsp;
+    </p>
+  </div>
+</nav>
+
+</body>
+</html>

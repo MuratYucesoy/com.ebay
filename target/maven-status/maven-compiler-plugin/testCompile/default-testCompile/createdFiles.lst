@@ -1,0 +1,7 @@
+pages\GiftCardPage.class
+pages\HomePage.class
+utilities\ConfigReader.class
+runners\Runner.class
+stepDefinitions\EbayStep.class
+utilities\Driver.class
+utilities\ReusableMethods.class
