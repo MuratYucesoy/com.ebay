@@ -25,6 +25,7 @@ Feature: Add product to basket
     And   closes the page
 
   Scenario: Verify that the user has added the product to the basket
+
     Then  clicks on the price and enters "500" and "1000"
     Then  clicks on the item position and enters the "10 km" distance
     Then  clicks delivery options and enters "Free Postage"
