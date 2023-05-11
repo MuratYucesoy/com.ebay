@@ -158,6 +158,9 @@ public class EbayStep {
     public void verifiesThatProductsAreListedInTheRequiredCriteria() {
         giftCardPage = new GiftCardPage();
 
+        ReusableMethods.waitFor(5);
+        String photo="ScreenPhotoNoProduct";
+        ReusableMethods.takeScreenShot(photo);
         Assert.assertFalse(giftCardPage.notFoundText.isDisplayed());
 
     }
@@ -221,8 +224,10 @@ public class EbayStep {
     public void verifiesThatTheAllTheProductsContainsFreePostage() {
         giftCardPage = new GiftCardPage();
 
+        ReusableMethods.waitFor(10);
+        String photo="ScreenPhotoDelivery";
+        ReusableMethods.takeScreenShot(photo);
         List<WebElement> products=giftCardPage.productInformations;
-
         products.forEach(each->Assert.assertTrue(each.getText().contains("Free postage")));
 
     }
@@ -238,6 +243,9 @@ public class EbayStep {
     public void verifiesThatTheProductHasBeenAddedToTheBasket() {
         giftCertificatesPage=new GiftCertificatesPage();
 
+        ReusableMethods.waitFor(5);
+        String photo="ScreenPhotoBasket";
+        ReusableMethods.takeScreenShot(photo);
         Assert.assertTrue(giftCertificatesPage.goToCheckout.isDisplayed());
     }
 
