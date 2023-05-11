@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<testsuite errors="0" failures="1" name="io.cucumber.core.plugin.JUnitFormatter" skipped="0" tests="2" time="33.837">
-    <testcase classname="Add product to basket" name="The user should be able to list the products that meet the desired conditions and add them to the basket" time="23.292">
+<testsuite errors="0" failures="2" name="io.cucumber.core.plugin.JUnitFormatter" skipped="0" tests="3" time="53.351">
+    <testcase classname="Add product to basket" name="The user should be able to list the products that meet the desired conditions and add them to the basket" time="22.097">
         <failure message="expected [false] but found [true]" type="java.lang.AssertionError"><![CDATA[Given the user goes to the ebay homepage....................................passed
 Then selects the gift card from the deals and sales drop-down menu in the top bar.passed
 And click all filters button................................................passed
@@ -20,18 +20,51 @@ java.lang.AssertionError: expected [false] but found [true]
 	at org.testng.Assert.failNotEquals(Assert.java:1413)
 	at org.testng.Assert.assertFalse(Assert.java:78)
 	at org.testng.Assert.assertFalse(Assert.java:88)
-	at stepDefinitions.EbayStep.verifiesThatProductsAreListedInTheRequiredCriteria(EbayStep.java:144)
+	at stepDefinitions.EbayStep.verifiesThatProductsAreListedInTheRequiredCriteria(EbayStep.java:161)
 	at ✽.verifies that products are listed in the required criteria(file:///C:/Users/murat/OneDrive/Desktop/com.EbayTask/src/test/resources/features/US001.feature:17)
 ]]></failure>
     </testcase>
-    <testcase classname="Add product to basket" name="The user lists products with different conditions and adds them to the basket" time="10.173">
+    <testcase classname="Add product to basket" name="No product other than the entered delivery type should be listed (negative test)" time="9.812">
+        <failure message="expected [true] but found [false]" type="java.lang.AssertionError"><![CDATA[Given the user goes to the ebay homepage....................................passed
+Then selects the gift card from the deals and sales drop-down menu in the top bar.passed
+And click all filters button................................................passed
+Then clicks delivery options and enters "Free Postage"......................passed
+And clicks apply button.....................................................passed
+And verifies that the all the products contains free postage................failed
+And closes the page.........................................................skipped
+
+StackTrace:
+java.lang.AssertionError: expected [true] but found [false]
+	at org.testng.Assert.fail(Assert.java:110)
+	at org.testng.Assert.failNotEquals(Assert.java:1413)
+	at org.testng.Assert.assertTrue(Assert.java:56)
+	at org.testng.Assert.assertTrue(Assert.java:66)
+	at stepDefinitions.EbayStep.lambda$verifiesThatTheAllTheProductsContainsFreePostage$0(EbayStep.java:226)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.openqa.selenium.support.pagefactory.internal.LocatingElementListHandler.invoke(LocatingElementListHandler.java:40)
+	at jdk.proxy2/jdk.proxy2.$Proxy23.forEach(Unknown Source)
+	at stepDefinitions.EbayStep.verifiesThatTheAllTheProductsContainsFreePostage(EbayStep.java:226)
+	at ✽.verifies that the all the products contains free postage(file:///C:/Users/murat/OneDrive/Desktop/com.EbayTask/src/test/resources/features/US001.feature:24)
+]]></failure>
+    </testcase>
+    <testcase classname="Add product to basket" name="Verify that the user has added the product to the basket" time="21.108">
         <system-out><![CDATA[Given the user goes to the ebay homepage....................................passed
 Then selects the gift card from the deals and sales drop-down menu in the top bar.passed
 And click all filters button................................................passed
-Then clicks on the price and enters "100" and "1500"........................passed
-Then clicks on the item position and enters the "50 km" distance............passed
+Then clicks on the price and enters "500" and "1000"........................passed
+Then clicks on the item position and enters the "10 km" distance............passed
 Then clicks delivery options and enters "Free Postage"......................passed
 Then clicks on the show only and prefer "Accepts Best offer"................passed
+Then clicks on the seller and click "Sellers with eBay Stores"..............passed
+And clicks apply button.....................................................passed
+And clicks "first product"..................................................passed
+And clicks add to cart......................................................passed
+And verifies that the product has been added to the basket..................passed
+Then closes all the pages...................................................passed
 ]]></system-out>
     </testcase>
 </testsuite>

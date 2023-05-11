@@ -3,5 +3,6 @@ pages\HomePage.class
 utilities\ConfigReader.class
 runners\Runner.class
 stepDefinitions\EbayStep.class
+pages\GiftCertificatesPage.class
 utilities\Driver.class
 utilities\ReusableMethods.class

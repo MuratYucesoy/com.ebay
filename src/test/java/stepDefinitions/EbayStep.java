@@ -10,20 +10,24 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.asserts.SoftAssert;
 import pages.GiftCardPage;
+import pages.GiftCertificatesPage;
 import pages.HomePage;
 import utilities.ConfigReader;
 import utilities.Driver;
 import utilities.ReusableMethods;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 public class EbayStep {
     Actions actions;
     HomePage homePage;
-
     GiftCardPage giftCardPage;
     SoftAssert softAssert;
+
+    GiftCertificatesPage giftCertificatesPage;
 
     @Given("the user goes to the ebay homepage")
     public void the_user_goes_to_the_ebay_homepage() {
@@ -67,7 +71,6 @@ public class EbayStep {
     @Then("clicks on the item position and enters the {string} distance")
     public void clicksOnTheItemPositionAndEntersTheDistance(String distance) {
         giftCardPage = new GiftCardPage();
-        //actions=new Actions(Driver.getDriver());
 
         giftCardPage.itemLocation.click();
         giftCardPage.withInRadio.click();
@@ -78,7 +81,6 @@ public class EbayStep {
         giftCardPage.withInSecondValue.click();
         giftCardPage.withInSecondValue.clear();
         giftCardPage.withInSecondValue.sendKeys(distance);
-        //actions.sendKeys(Keys.ENTER).perform();
         giftCardPage.withInRadio.click();
     }
 
@@ -165,21 +167,82 @@ public class EbayStep {
         Driver.closeDriver();
     }
 
-    @And("verifies that the product prices are within the entered price value range")
-    public void verifiesThatTheProductPricesAreWithinTheEnteredPriceValueRange() {
+
+    @Then("clicks on the show only and prefer {string}")
+    public void clicksOnTheShowOnlyAndPrefer(String arg) {
         giftCardPage = new GiftCardPage();
 
-        //List<WebElement> productPrices = new ArrayList<>(giftCardPage.prices);
-//
-        //for (WebElement element :productPrices
-        //) {
-        //    System.out.println(element.getSize());
-        //}
-        int number = 0;
-        for (int i = 0; i < giftCardPage.prices.size(); i++) {
-            number = Integer.parseInt(giftCardPage.prices.get(i).getText());
-            Assert.assertTrue(number <= 1500);
+        giftCardPage.showOnly.click();
+        if (arg.equals("Accepts Best offer")) {
+            giftCardPage.acceptBestOffer.click();
         }
+
     }
 
+
+    @And("clicks {string}")
+    public void clicks(String arg0) {
+
+        giftCardPage=new GiftCardPage();
+        giftCertificatesPage=new GiftCertificatesPage();
+
+        List<WebElement>products=giftCardPage.productPhotos;
+        switch (arg0) {
+            case "first product"->{
+                try {
+                    products.get(0).click();
+                }
+                catch(org.openqa.selenium.StaleElementReferenceException ex)
+                {
+                    products.get(0).click();
+                }
+            }
+            case "second prdoduct"->{
+                try {
+                    products.get(1).click();
+                }
+                catch(org.openqa.selenium.StaleElementReferenceException ex)
+                {
+                    products.get(1).click();
+                }
+            }
+        }
+        Set<String> windowHandles = Driver.getDriver().getWindowHandles();
+        Iterator<String> it = windowHandles.iterator();
+        String productsWindow = it.next();
+        String selectedProduct = it.next();
+        Driver.getDriver().switchTo().window(selectedProduct);
+
+        giftCertificatesPage.addToCart.click();
+
+    }
+
+    @And("verifies that the all the products contains free postage")
+    public void verifiesThatTheAllTheProductsContainsFreePostage() {
+        giftCardPage = new GiftCardPage();
+
+        List<WebElement> products=giftCardPage.productInformations;
+
+        products.forEach(each->Assert.assertTrue(each.getText().contains("Free postage")));
+
+    }
+
+    @And("clicks add to cart")
+    public void clicksAddToCart() {
+        giftCertificatesPage=new GiftCertificatesPage();
+
+        giftCertificatesPage.goToCart.click();
+    }
+
+    @And("verifies that the product has been added to the basket")
+    public void verifiesThatTheProductHasBeenAddedToTheBasket() {
+        giftCertificatesPage=new GiftCertificatesPage();
+
+        Assert.assertTrue(giftCertificatesPage.goToCheckout.isDisplayed());
+    }
+
+    @Then("closes all the pages")
+    public void closesAllThePages() {
+        Driver.quitDriver();
+    }
 }
